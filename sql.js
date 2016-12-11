@@ -1,3 +1,7 @@
+/* 
+This is for database conneciton test
+*/
+
 var mysql = require('mysql');
 var mysql_host = '127.0.0.1';
 var mysql_port = 3306;
@@ -16,28 +20,14 @@ var conn = mysql.createConnection({
   password        : mysql_password,
   database		  : mysql_database
 });
-conn.connect();
+conn.connect(function(err) {
+if (err) {
+console.error('error connecting: ' + err.stack);
+return;
+}
 
-// conn.connect(function(err) {
-// 	conn.query( 'SELECT * from books', function(err, rows) {
-//  // And done with the connection.
-//     console.log(rows[0]);
-//     conn.release();
-//  // Don't use the connection here, it has been returned to the pool.
-//   });
-// if (err) {
-// console.error('error connecting: ' + err.stack);
-// return;
-// }
-
-// console.log('connected as id ' + conn.threadId);
-// });
-
-
-// conn.query('SELECT 1', function(err, rows) {
-// // connected! (unless `err` is set)
-// console.log(err, rows);
-// });
+console.log('connected as id ' + conn.threadId);
+});
 
 
 
