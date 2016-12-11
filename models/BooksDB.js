@@ -23,6 +23,7 @@ var sequelize = new Sequelize(conn_url)
 // console.log(sequelize)
 
 var Books_sql = sequelize.define('book_ORM', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true,primaryKey:true},
   title: Sequelize.STRING,
   price: Sequelize.DATE
 });
@@ -62,7 +63,10 @@ module.exports = function () {
             query += ")";
              // Show query string to database.
             console.log(query);
-            Books_sql.sync({force: true}).then(function () {
+            // [Note] for 1st time runner.
+            // this will drop the table first and re-create it afterwards
+            // Books_sql.sync({force: true})
+            Books_sql.sync().then(function () {
               // Table created
               return Books_sql.create({
                 title: data.title,
