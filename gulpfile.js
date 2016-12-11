@@ -6,7 +6,8 @@ var nodemon = require('gulp-nodemon');
 
 gulp.task('browser-sync', ['nodemon'], function() {
     browserSync.init(null, {
-        proxy: "http://localhost:3000", // port of node server
+        proxy: "http://localhost:8888", // port of node server
+        notify: false
     });
 });
 
@@ -20,7 +21,7 @@ gulp.task('default', ['browser-sync'], function () {
 
 gulp.task('nodemon', function (cb) {
     var callbackCalled = false;
-    return nodemon({script: './bin/www'}).on('start', function () {
+    return nodemon({script: 'bin/www'}).on('start', function () {
         if (!callbackCalled) {
             callbackCalled = true;
             cb();
