@@ -9,3 +9,7 @@ CREATE TABLE IF NOT EXISTS books (
     PRIMARY KEY (id)
 );
 select * from productdb2.books;
+
+CREATE USER 'npu'@'%' IDENTIFIED BY 'grace0418'
+show grants for npu;
+GRANT ALL ON productdb2 TO 'npu'@'%';
