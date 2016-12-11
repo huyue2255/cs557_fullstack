@@ -1,0 +1,12 @@
+extends layout
+block content
+    .container(ng-controller="BookstoreCtrl")
+        section.books
+            article(ng-repeat="book in books")
+                h2 Title: {{book.title}}
+                h2 Price: {{book.price}}
+                p published on {{book.date}}
+                hr
+            hr
+            a(href='admin') Admin Page  
+    script(src='/javascripts/bookstore.js')
