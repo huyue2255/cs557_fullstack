@@ -4,8 +4,9 @@ var mysql_port = 3306;
 var mysql_user = "npu";
 var mysql_password = "grace0418";
 var mysql_database = "productdb2";
-var connection;
-
+var conn_url="mysql://"+mysql_user+":"+mysql_password+"@"+mysql_host+":"+mysql_port+"/"+mysql_database;
+console.log(conn_url)
+var connection
 // var pool  = mysql.createPool({
 //   connectionLimit : 10,
 //   host            : mysql_host,
@@ -14,6 +15,17 @@ var connection;
 //   password        : mysql_password,
 //   database        : mysql_database
 // });
+
+
+//* [Note] Add Sequelize for MySQL ORM
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize(conn_url)
+// console.log(sequelize)
+
+var Books_sql = sequelize.define('book_ORM', {
+  title: Sequelize.STRING,
+  price: Sequelize.DATE
+});
 
 module.exports = function () {
     connection = mysql.createConnection({
@@ -50,6 +62,13 @@ module.exports = function () {
             query += ")";
              // Show query string to database.
             console.log(query);
+            Books_sql.sync({force: true}).then(function () {
+              // Table created
+              return Books_sql.create({
+                title: data.title,
+                price: data.price
+              });
+            });
             connection.query(query, callback);//routes.api.add.js
         },
         update: function (data, callback) {
