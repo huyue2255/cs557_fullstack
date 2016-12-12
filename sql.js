@@ -13,20 +13,20 @@ var mysql_database = 'productdb2';
 // var conn = mysql.createConnection('mysql://root:raliclo@127.0.0.1:3306/productdb2?debug=true');
 
 var conn = mysql.createConnection({
-  debug 		  : true,
-  host            : mysql_host,
-  user            : mysql_user,
-  port            : mysql_port,
-  password        : mysql_password,
-  database		  : mysql_database
+    debug: true,
+    host: mysql_host,
+    user: mysql_user,
+    port: mysql_port,
+    password: mysql_password,
+    database: mysql_database
 });
 conn.connect(function(err) {
-if (err) {
-console.error('error connecting: ' + err.stack);
-return;
-}
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
 
-console.log('connected as id ' + conn.threadId);
+    console.log('connected as id ' + conn.threadId);
 });
 
 

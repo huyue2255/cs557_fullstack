@@ -1,5 +1,53 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  script(src='public/app/shopcartApp.js')
+  section.largePhoto
+    .navbar
+      #logo  
+      #photoText Yue Hu's WebSite
+      .nav#mySidenav.w3-sidenav.w3-white.w3-card-2(style='display:none'  )
+          a(href='#/order')  Order Page 
+          a(href='#/cart')  Cart Page 
+          a(href='#/checkout')  Checkout Page
+          a.w3-closenav.w3-large(href='javascript:void(0)', style="background-color:#d8bfbf" onmouseover='w3_close()') Close ×
+    header.w3-container.w3-teal
+      span.w3-opennav.w3-xlarge(onmouseover='w3_open()') ☰
+  section.centerView(ng-view)
+  section.pgDesc
+    | This is a photo image company.
+    <iframe src="http://www.life-fund.org:18181/" align="center" marginwidth="0" marginheight="0" width="100%" height="600" sandbox="allow-same-origin allow-scripts"> </iframe>
+  section#mapScript
+    #gmap
+      | this is gmap.
+    script.
+      function initMap() {
+      // Create a map object and specify the DOM element for display.
+      var gmap = new google.maps.Map(document.getElementById('gmap'), {
+      center: {lat: 37.4790177, lng: -121.9247308},
+      scrollwheel: false,
+      zoom: 15
+      });
+      var goldStar = {
+      path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+      fillColor: 'yellow',
+      fillOpacity: 0.8,
+      scale: 0.1,
+      strokeColor: 'gold',
+      strokeWeight: 14
+      };
+      var marker = new google.maps.Marker({
+      position: gmap.getCenter(),
+      map: gmap,
+      icon: goldStar,
+      draggable: true
+      });
+      }
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyChOJmWhRfhw1Z5ztmyjPXEpvSu8dQK4M8&callback=initMap', async='', defer='')
+  
+  footer.w3-container.w3-teal
+      h5 Footer
+      p Footer information goes here
+
+
+

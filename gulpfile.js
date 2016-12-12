@@ -11,17 +11,17 @@ gulp.task('browser-sync', ['nodemon'], function() {
     });
 });
 
-gulp.task('default', ['browser-sync'], function () {
-    gulp.watch(["./bin/*"], reload);
+gulp.task('default', ['browser-sync'], function() {
+    gulp.watch(["./bin/**/*"], reload);
     gulp.watch(["./models/*"], reload);
-    gulp.watch(["./public/*"], reload);
-    gulp.watch(["./routes/*"], reload);
-    gulp.watch(["./views/*"], reload);
+    gulp.watch(["./public/**/*"], reload);
+    gulp.watch(["./routes/**/*"], reload);
+    gulp.watch(["./views/**/*"], reload);
 });
 
-gulp.task('nodemon', function (cb) {
+gulp.task('nodemon', function(cb) {
     var callbackCalled = false;
-    return nodemon({script: 'bin/www'}).on('start', function () {
+    return nodemon({ script: 'bin/www' }).on('start', function() {
         if (!callbackCalled) {
             callbackCalled = true;
             cb();

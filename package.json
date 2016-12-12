@@ -1,26 +1,26 @@
 {
-  "name": "cs557_final_fullstack",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "start": "gulp"
-  },
-  "dependencies": {
-    "angular": "^1.6.0",
-    "angular-route": "^1.6.0",
-    "body-parser": "^1.15.2",
-    "browser-sync": "^2.18.2",
-    "cookie-parser": "^1.4.3",
-    "debug": "^2.3.3",
-    "express": "^4.14.0",
-    "express-session": "^1.0.4",
-    "gulp": "^3.9.1",
-    "gulp-nodemon": "^2.2.1",
-    "jade": "^1.11.0",
-    "mongodb": ">=2.1.0",
-    "mysql": ">2.11.1",
-    "pug": "^2.0.0-beta6",
-    "sequelize": "^3.27.0",
-    "serve-favicon": "^2.3.2"
-  }
+    "name": "cs557_final_fullstack",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "start": "gulp"
+    },
+    "dependencies": {
+        "angular": "^1.6.0",
+        "angular-route": "^1.6.0",
+        "body-parser": "^1.15.2",
+        "browser-sync": "^2.18.2",
+        "cookie-parser": "^1.4.3",
+        "debug": "^2.3.3",
+        "express": "^4.14.0",
+        "express-session": "^1.0.4",
+        "gulp": "^3.9.1",
+        "gulp-nodemon": "^2.2.1",
+        "jade": "^1.11.0",
+        "mongodb": ">=2.1.0",
+        "mysql": ">2.11.1",
+        "pug": "^2.0.0-beta6",
+        "sequelize": "^3.27.0",
+        "serve-favicon": "^2.3.2"
+    }
 }

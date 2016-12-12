@@ -1,0 +1,94 @@
+/*
+Student Info: Name=YueHu, ID=12980
+Subject: CS557C_HW04_Fall_2016
+Author: YUE
+Filename: homepage.css.css
+Date and Time: Oct 30, 2016 2:32:56 PM
+Project Name: CS557C_HW4
+*/
+
+
+/* 
+    Created on : Oct 30, 2016, 2:32:56 PM
+    Author     : YUE
+*/
+body {
+    background-color: lightyellow;
+    margin:0;
+    padding: 0;
+}
+
+.largePhoto {
+    background-image: url("http://i1.wp.com/f50.io/wp-content/uploads/2016/02/iStock_55076876_XXXLARGE-e1470079200818.jpg?fit=2000%2C1333");
+    width: 100%;
+    min-height: 600px;
+    /*background-size: auto 100%;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index:100;
+}
+
+.pgDesc {
+    text-align: center;
+    height : 100%;
+    background-color: rgba(200,1,1,0.5);
+}
+
+.navbar {
+    background-color: rgba(255, 255, 255, .5);
+    height: 50px;
+}
+
+#logo {
+    margin-top:0px;
+    margin-left: 25px;
+    height: 100%;
+    max-width: 50px;
+    background-color: lightcyan;
+    background-image: url(http://f50.io/wp-content/uploads/2016/10/f50-logo-57x57-1.png);
+    background-size: 100% 100%;
+    border-radius: 10px;
+}
+#photoText {
+    position: absolute;
+    margin-top:-33px;
+    margin-left: 40vw;
+}
+.navlink {
+    margin:auto;
+    width : 31vw;
+    border-style: double;
+    background-color : lightcyan;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+}
+.navlink a {
+     text-decoration: none;
+}
+.firstline {
+    margin-left:0.2vw;
+    width:100vw;
+}
+#gmap {
+    height: 300px;
+    background-color: pink;
+}
+#navPage {
+    background-color: red;
+}
+.splitScreen {
+    width: 30vw;
+    min-height: 600px;
+    background-color: green;
+    display: inline-block;
+}
+.iframebox {
+    min-height : 600px;
+}
+.centerView {
+    width: 100vw;
+    height : 100%;
+    background-color: red;
+    z-index: 5;
+}

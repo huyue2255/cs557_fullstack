@@ -1,10 +1,20 @@
 doctype html
 html(ng-app="#{app}")
   head
-    title Bookstore
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Photoshop
+    link(rel='stylesheet', type='text/css', href='/css/w3.css')
+    link(rel='stylesheet', type='text/css', href='/css/photo.css')
+    //- link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    //- linke(rel='stylesheet',type='text/css', href='/css/Bootstrap_Responsive.css')
     script(src='./javascripts/libs/angular.min.js')
     script(src='./javascripts/libs/angular-route.min.js')
     script(src='/javascripts/admin.js')
+    script.
+      function w3_open() {
+      document.getElementById("mySidenav").style.display = "block";
+      }
+      function w3_close() {
+      document.getElementById("mySidenav").style.display = "none";
+      }
   body
     block content

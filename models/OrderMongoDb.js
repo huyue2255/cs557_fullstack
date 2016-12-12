@@ -2,14 +2,13 @@ var crypto = require("crypto");
 var client = require('mongodb').MongoClient;
 var mongodb_host = "localhost";
 var mongodb_port = "27017";
-var mongodb_dbname= '/bookstore-express';
-var collectionURL;
+var collection;
 
 module.exports = function () {
-    connectionURL = 'mongodb://';
-    connectionURL += mongodb_host + ':' + mongodb_port;
-    connectionURL += mongodb_dbname;
-    client.connect(connectionURL, function (err, database) {
+    connection = 'mongodb://';
+    connection += mongodb_host + ':' + mongodb_port;
+    connection += '/order-express';
+    client.connect(connection, function (err, database) {
         if (err) {
             throw new Error("Can't connect");
         } else {
