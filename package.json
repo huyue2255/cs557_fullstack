@@ -6,6 +6,8 @@
     "start": "gulp"
   },
   "dependencies": {
+    "angular": "^1.6.0",
+    "angular-route": "^1.6.0",
     "body-parser": "^1.15.2",
     "browser-sync": "^2.18.2",
     "cookie-parser": "^1.4.3",
@@ -17,6 +19,7 @@
     "jade": "^1.11.0",
     "mongodb": ">=2.1.0",
     "mysql": ">2.11.1",
+    "pug": "^2.0.0-beta6",
     "sequelize": "^3.27.0",
     "serve-favicon": "^2.3.2"
   }
