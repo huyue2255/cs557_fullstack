@@ -1,19 +1,45 @@
 var mysql = require('mysql');
 var mysql_host = "localhost";
-var mysql_user = "root";
-var mysql_password = "";
+var mysql_port = 3306;
+var mysql_user = "npu";
+var mysql_password = "grace0418";
 var mysql_database = "productdb2";
-var connection;
+var conn_url="mysql://"+mysql_user+":"+mysql_password+"@"+mysql_host+":"+mysql_port+"/"+mysql_database;
+console.log(conn_url)
+var connection
+// var pool  = mysql.createPool({
+//   connectionLimit : 10,
+//   host            : mysql_host,
+//   user            : mysql_user,
+//   port            : mysql_port,
+//   password        : mysql_password,
+//   database        : mysql_database
+// });
+
+
+//* [Note] Add Sequelize for MySQL ORM
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize(conn_url)
+// console.log(sequelize)
+
+var Books_sql = sequelize.define('book_ORM', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true,primaryKey:true},
+  title: Sequelize.STRING,
+  price: Sequelize.DATE
+});
 
 module.exports = function () {
     connection = mysql.createConnection({
         host: mysql_host,
+        port: mysql_port,
         user: mysql_user,
-        password: mysql_password
+        password: mysql_password,
+        database: mysql_database
     });
     connection.connect(function (err) {
         if (err) {
-            throw new Error("Can't connect to MySQL server.");
+            console.log(err);
+            // throw new Error("Can't connect to MySQL server.");
         } else {
             connection.query("USE " + mysql_database, function (err, rows, fields) {
                 if (err) {
@@ -26,6 +52,8 @@ module.exports = function () {
     });
     return {
         add: function (data, callback) {
+             // Show data sent to backend.
+            console.log(data);
             var date = new Date();
             var query = "";
             query += "INSERT INTO books (title, price, date) VALUES (";
@@ -33,9 +61,23 @@ module.exports = function () {
             query += connection.escape(data.price) + ", ";
             query += "'" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + "'";
             query += ")";
+             // Show query string to database.
+            console.log(query);
+            // [Note] for 1st time runner.
+            // this will drop the table first and re-create it afterwards
+            // Books_sql.sync({force: true})
+            Books_sql.sync().then(function () {
+              // Table created
+              return Books_sql.create({
+                title: data.title,
+                price: data.price
+              });
+            });
             connection.query(query, callback);//routes.api.add.js
         },
         update: function (data, callback) {
+             // Show data sent to backend.
+            console.log(data);
             var query = "UPDATE books SET ";
             query += "title=" + connection.escape(data.title) + ", ";
             query += "price=" + connection.escape(data.price) + " ";
@@ -44,6 +86,8 @@ module.exports = function () {
         },
         get: function (callback) {
             var query = "SELECT * FROM books ORDER BY id";
+             // Show query string to database.
+            console.log(query);
             connection.query(query, function (err, rows, fields) {
                 if (err) {
                     throw new Error("Error getting rows from 'books'");
@@ -53,7 +97,11 @@ module.exports = function () {
             });
         },
         remove: function (id, callback) {
+            // Show data sent to backend.
+            console.log(id);
             var query = "DELETE FROM books WHERE id='" + id + "'";
+             // Show query string to database.
+            console.log(query);
             connection.query(query, callback);
         }
     };

@@ -12,7 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '8888');
 app.set('port', port);
 
 /**
@@ -20,14 +20,6 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -86,5 +78,29 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('[Info]Server Listening on ' + bind);
 }
+
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.on('error', onError);
+server.on('listening', onListening);
+server.listen(port);
+
+/*
+* Do not kill process for any exception.
+*/
+
+
+process.on('uncaughtException', function (err) {
+    if (err.errno === 'EADDRINUSE') {
+        console.log("Bug");
+    } else {}
+    console.log(err);
+    console.log("[uncaughtException] Program Continued ");
+    // process.exit(1);
+});
+

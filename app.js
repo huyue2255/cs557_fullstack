@@ -7,8 +7,10 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-//var books = require("./models/BooksMongoDB")();
-var books = require("./models/BooksDB")();
+
+//* [Note] Database Flavors . Preferred using mongodb.
+var books = require("./models/BooksMongoDB")();
+// var books = require("./models/BooksDB")();
 var app = express();
 
 // view engine setup
@@ -35,6 +37,7 @@ app.use(session({
     }
 }));
 
+// initialization
 app.use(function (req, res, next) {
     /**
      if (req.session.cart === undefined) {

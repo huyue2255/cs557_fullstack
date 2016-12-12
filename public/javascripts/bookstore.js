@@ -3,10 +3,11 @@ function BookstoreCtrl($scope, $http) {
         {title: "", price: "Loading ..."}
     ];
     $http({method: 'GET', url: '/api/get'})
-            .success(function (data, status, headers, config) {
-                $scope.books = data;
+            .then(function (response) {
+                $scope.books = response.data;
+                return response
             })
-            .error(function (data, status, headers, config) {
+            .catch(function (response) {
                 console.error("Error getting books.");
             });
 }
