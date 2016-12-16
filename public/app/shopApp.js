@@ -1,4 +1,31 @@
 var shopApp = angular.module('shopApp', ['ngRoute']);
+
+angular.module('shopApp')
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl:'pages/home.html'
+                controller:'controller/homeController'
+            })
+            .when('/order', {
+                templateUrl:'pages/order.html'
+                controller:'controller/orderController'
+            })
+            .when('/cart', {
+                templateUrl:'pages/cart.html'
+                controller:'controller/cartController'
+            })
+            .when('/checkout', {
+                templateUrl:'pages/checkout.html'
+                controller:'controller/checkoutController'
+            })
+            .otherwise({
+                templateUrl:'pages/routeNotFound.html'
+                controller:'controller/nfController'
+            })
+    }
+}
+
 var AddEditRoute = {
     controller: 'AddEditCtrl',
     template:   '\

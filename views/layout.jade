@@ -8,6 +8,7 @@ html(ng-app="#{app}")
     //- linke(rel='stylesheet',type='text/css', href='/css/Bootstrap_Responsive.css')
     script(src='./javascripts/libs/angular.min.js')
     script(src='./javascripts/libs/angular-route.min.js')
+    script(src='app/shopApp.js')
     script(src='/javascripts/admin.js')
     script.
       function w3_open() {
@@ -16,5 +17,5 @@ html(ng-app="#{app}")
       function w3_close() {
       document.getElementById("mySidenav").style.display = "none";
       }
-  body
+  body(ng-controller="homeController")
     block content

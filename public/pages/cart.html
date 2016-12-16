@@ -1,0 +1,51 @@
+<!--<div>
+    <h1>Cart Page</h1>
+    <p>{{ message}}</p>
+     Angular 1.x 
+    <ul>
+        <li  >
+            <style>
+                .table {
+                    border-width: 1px;
+                    width: 30%;
+                    border-style: ridge;
+                }
+                .row {
+                    board-style:ridge;
+                }
+
+            </style>
+            <table class="table">
+                <tr>
+                    <th>itemName</th>
+                    <th>itemQty</th>
+                    <th>Update</th> 
+                    <th>Remove</th>
+                </tr>
+                <tr class="row" ng-repeat="itemX in cart" >
+                    <td><input type="text" value="{{itemX.itemName}}"><br> </td>
+                    <td><input type="text" value="{{itemX.itemQty}}"><br> </td>
+                    <td> <button ng-click="updateQuantity(item.itemName)">Update</button> </td>
+                    <td> <button ng-click="removeItem(item.itemName)">Remove</button> </td>
+                </tr>
+            </table>         
+        </li>
+    </ul>
+    <h3>{{result}}</h3>
+</div>-->
+
+
+<div>
+    <h1>Cart Page</h1>
+    <p>{{ message}}</p>
+    <article ng-repeat="item in cart">
+        <hr />
+        <strong>{{item.itemName}}</strong><br />
+        <input type="text" id="{{item.itemName}}" value="{{item.itemQty}}">
+        <button ng-click="updateQuantity(item.itemName)">Update</button> 
+        <button ng-click="removeItem(item.itemName)">Remove</button> 
+        <br />
+    </article>
+    <hr>
+    <h3>{{result}}</h3>
+</div>

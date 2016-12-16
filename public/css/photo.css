@@ -88,7 +88,7 @@ body {
 }
 .centerView {
     width: 100vw;
-    height : 100%;
-    background-color: red;
+    height : 50vw;
+    background-color: grey;
     z-index: 5;
 }
